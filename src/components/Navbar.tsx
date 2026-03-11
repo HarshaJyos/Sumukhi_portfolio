@@ -14,7 +14,7 @@ export default function Navbar() {
     >
       <div className="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
         <a href="#" className="text-lg tracking-wider text-ink hover:text-warm transition-colors">
-          S.
+          Sumukhi.
         </a>
 
         <div className="flex items-center gap-8">
