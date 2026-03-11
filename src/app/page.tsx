@@ -3,11 +3,13 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import Decorations from "@/components/Decorations";
 import { Mail, Phone, Linkedin, Github, Heart } from "lucide-react";
 
 export default function Page() {
   return (
     <main className="relative w-full overflow-hidden">
+      <Decorations />
       <Navbar />
       <Hero />
       <About />
