@@ -13,9 +13,9 @@ const PROJECTS = [
   },
   {
     title: "Content Management System",
-    tech: ["React.js", "PostgreSQL", "Lexical.js", "Azure"],
+    tech: ["React.js", "Firebase", "Lexical.js", "Azure"],
     description: "CMS boosting publishing speed by 40%. Custom rich-text editor plugins and fully automated Azure CI/CD pipelines achieving 99.95% uptime.",
-    link: "https://7pavankumar9frontend.azurewebsites.net",
+    link: "https://coreblock.in",
     isGithub: false,
     dotColor: "bg-navy",
   },
@@ -23,7 +23,7 @@ const PROJECTS = [
     title: "Recipe Maker API",
     tech: ["Node.js", "Express", "TypeScript", "REST"],
     description: "RESTful API converting recipe inputs into machine-compatible JSON format. Real-time webhook endpoints with comprehensive API documentation.",
-    link: "#",
+    link: "https://drag-and-drop-recipe-builder.vercel.app",
     isGithub: false,
     dotColor: "bg-coral",
   },
@@ -67,7 +67,7 @@ export default function Projects() {
                       {project.title}
                     </h3>
                   </div>
-                  
+
                   <p className="text-base md:text-lg text-ink/50 leading-[1.7] tracking-wide mb-6 max-w-xl">
                     {project.description}
                   </p>
