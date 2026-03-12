@@ -13,7 +13,7 @@ import {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-28 px-6 relative">
+    <section id="contact" className="py-10 md:py-10 px-6 relative">
       <div className="max-w-4xl mx-auto">
         {/* Section heading */}
         <motion.div
