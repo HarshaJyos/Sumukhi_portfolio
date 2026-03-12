@@ -1,82 +1,178 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowDown, Mail, Phone, Linkedin, Github } from "lucide-react";
+import { ArrowDown, Mail, Sparkles } from "lucide-react";
+
+/* Small reusable sparkle SVG */
+function Sparkle({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41L12 0Z" />
+    </svg>
+  );
+}
+
+function Lightning({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+    >
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  );
+}
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-14 relative overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen w-full overflow-hidden flex items-end justify-center"
+    >
+      {/* Full-bleed hero photo */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/hero.png"
+          alt="Sumukhi"
+          fill
+          className="object-cover object-top"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradient overlay from bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-transparent" />
+      </div>
 
-      {/* Soft background gradient blobs */}
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-warm/[0.07] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-navy/[0.05] blur-[100px] pointer-events-none" />
+      {/* Floating playful decorations */}
+      <motion.div
+        className="absolute top-[15%] left-[8%] z-10 text-yellow"
+        animate={{ y: [-10, 10, -10], rotate: [0, 15, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+      >
+        <Sparkle className="w-8 h-8 md:w-10 md:h-10" />
+      </motion.div>
 
-      <div className="max-w-4xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
+      <motion.div
+        className="absolute top-[25%] right-[10%] z-10 text-pink"
+        animate={{ y: [10, -10, 10], rotate: [0, -20, 0] }}
+        transition={{
+          repeat: Infinity,
+          duration: 5,
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
+      >
+        <Sparkle className="w-6 h-6 md:w-8 md:h-8" />
+      </motion.div>
 
-        {/* Left — Text Content */}
+      <motion.div
+        className="absolute top-[10%] right-[25%] z-10 text-yellow hidden md:block"
+        animate={{ y: [-8, 8, -8], rotate: [-5, 5, -5] }}
+        transition={{
+          repeat: Infinity,
+          duration: 6,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+      >
+        <Lightning className="w-10 h-10" />
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-[35%] left-[5%] z-10 text-lavender hidden md:block"
+        animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }}
+        transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+      >
+        <Sparkle className="w-5 h-5" />
+      </motion.div>
+
+      {/* Small floating sticker shapes */}
+      <motion.div
+        className="absolute top-[40%] right-[6%] z-10 w-12 h-12 rounded-full border-3 border-pink/50 hidden md:block"
+        animate={{ y: [-12, 12, -12] }}
+        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-[20%] left-[20%] z-10 w-4 h-4 rounded-full bg-yellow hidden md:block"
+        animate={{ scale: [0.8, 1.3, 0.8] }}
+        transition={{
+          repeat: Infinity,
+          duration: 3,
+          ease: "easeInOut",
+          delay: 0.3,
+        }}
+      />
+
+      {/* Content overlay — name + CTA at bottom */}
+      <div className="relative z-20 w-full max-w-5xl mx-auto px-6 pb-12 md:pb-16">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="order-2 md:order-1 text-center md:text-left"
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         >
-          <div className="inline-block px-4 py-1.5 rounded-full bg-warm/10 text-warm text-sm tracking-widest uppercase mb-6 border border-warm/20">
+          {/* Label sticker */}
+          <motion.div
+            initial={{ scale: 0, rotate: -10 }}
+            animate={{ scale: 1, rotate: -3 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.6,
+              type: "spring",
+              stiffness: 200,
+            }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-pink text-white font-lilita text-sm md:text-base tracking-wider border-3 border-white/30 shadow-[3px_3px_0_0_rgba(0,0,0,0.3)] mb-4"
+          >
+            <Sparkles className="w-4 h-4" />
             Hello, I&apos;m
-          </div>
+          </motion.div>
 
-          <h1 className="text-6xl md:text-7xl lg:text-8xl tracking-tight text-ink mb-4 leading-[0.95]">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-lilita text-white tracking-tight leading-[0.9] mb-3">
             Sumu
-            <span className="text-warm">khi</span>
+            <span className="text-yellow">khi</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-ink/60 mb-10 leading-relaxed max-w-md mx-auto md:mx-0">
-            Full-Stack Developer building delightful web experiences with curiosity and craft.
+          <p className="text-lg md:text-xl text-white/70 font-body max-w-lg mb-8 leading-relaxed tracking-wide">
+            A curious soul building delightful web experiences — one question at
+            a time.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
-            <a href="mailto:balasumukhi29@gmail.com" className="btn-primary">
-              <Mail className="w-4 h-4" /> Let&apos;s Talk
-            </a>
-            <a href="tel:+916301608287" className="btn-outline">
-              <Phone className="w-4 h-4" /> +91-630-160-8287
-            </a>
+          {/* CTA buttons */}
+          <div className="flex flex-wrap gap-3">
+            <motion.a
+              href="mailto:balasumukhi29@gmail.com"
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-playful"
+            >
+              <Mail className="w-4 h-4" />
+              Let&apos;s Talk
+            </motion.a>
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-outline-playful bg-white/10 text-white border-white/40 backdrop-blur-sm"
+            >
+              <Sparkles className="w-4 h-4" />
+              See My Work
+            </motion.a>
           </div>
-
-          <div className="flex mb-5 items-center gap-5 justify-center md:justify-start">
-            <a href="https://www.linkedin.com/in/kalimireddy-bala-sumukhi/" target="_blank" rel="noopener noreferrer" className="text-ink/25 hover:text-[#0a66c2] transition-colors">
-              <Linkedin className="w-8 h-8" />
-            </a>
-            <a href="https://github.com/sumukhi23" target="_blank" rel="noopener noreferrer" className="text-ink/25 hover:text-ink transition-colors">
-              <Github className="w-8 h-8" />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Right — Photo */}
-        <motion.div
-          initial={{ opacity: 0, x: 40, rotate: 3 }}
-          animate={{ opacity: 1, x: 0, rotate: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          className="order-1 md:order-2 flex justify-center relative"
-        >
-          {/* Decorative ring */}
-          <div className="absolute inset-0 m-auto w-[290px] h-[370px] md:w-[320px] md:h-[400px] rounded-[2.5rem] border-2 border-warm/20 rotate-3" style={{ animation: "float-up 6s ease-in-out infinite" }} />
-
-          <div className="relative w-[270px] h-[350px] md:w-[300px] md:h-[380px] rounded-[2rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.12)] border-4 border-white group">
-            <Image src="/hero.png" alt="Sumukhi" fill className="object-cover transition-transform duration-700 group-hover:scale-105" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent" />
-          </div>
-
-          {/* Small accents */}
-          <div className="absolute -bottom-4 -left-4 w-8 h-8 rounded-xl bg-warm rotate-12 shadow-lg" style={{ animation: "float-up 4s ease-in-out 1s infinite" }} />
-          <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-coral/60 shadow-md" style={{ animation: "float-down 5s ease-in-out infinite" }} />
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-ink/20"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 text-white/40"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
